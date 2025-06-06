@@ -25,6 +25,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
 }) => {
   const [newMessage, setNewMessage] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -37,9 +38,15 @@ const ChatArea: React.FC<ChatAreaProps> = ({
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     if (newMessage.trim()) {
+      console.log('Sending message:', newMessage);
       onSendMessage(newMessage);
       setNewMessage('');
+      inputRef.current?.focus();
     }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewMessage(e.target.value);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -114,11 +121,13 @@ const ChatArea: React.FC<ChatAreaProps> = ({
         <div className="flex items-center space-x-2">
           <div className="flex-1 relative">
             <Input
+              ref={inputRef}
               type="text"
               value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyPress}
               placeholder="Type a message..."
+              autoComplete="off"
               className="w-full rounded-full border-lavender-300 focus:ring-lavender-500 focus:border-lavender-500 pr-12 bg-white/90 backdrop-blur-sm"
             />
           </div>
