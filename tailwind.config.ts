@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,32 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				lavender: {
+					50: '#faf9ff',
+					100: '#f3f1ff',
+					200: '#ebe5ff',
+					300: '#ddd0ff',
+					400: '#c7b2ff',
+					500: '#b195ff',
+					600: '#9c77ff',
+					700: '#8b5cf6',
+					800: '#7c3aed',
+					900: '#6d28d9',
+					950: '#4c1d95',
+				},
+				purple: {
+					50: '#faf5ff',
+					100: '#f3e8ff',
+					200: '#e9d5ff',
+					300: '#d8b4fe',
+					400: '#c084fc',
+					500: '#a855f7',
+					600: '#9333ea',
+					700: '#7c3aed',
+					800: '#6b21a8',
+					900: '#581c87',
+					950: '#3b0764',
 				}
 			},
 			borderRadius: {
@@ -84,11 +111,40 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'bounce-gentle': {
+					'0%, 100%': {
+						transform: 'translateY(0)',
+					},
+					'50%': {
+						transform: 'translateY(-5px)',
+					},
+				},
+				'pulse-soft': {
+					'0%, 100%': {
+						opacity: '1',
+					},
+					'50%': {
+						opacity: '0.8',
+					},
+				},
+				'slide-up': {
+					'0%': {
+						transform: 'translateY(10px)',
+						opacity: '0',
+					},
+					'100%': {
+						transform: 'translateY(0)',
+						opacity: '1',
+					},
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'bounce-gentle': 'bounce-gentle 1s ease-in-out infinite',
+				'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
+				'slide-up': 'slide-up 0.3s ease-out',
 			}
 		}
 	},
